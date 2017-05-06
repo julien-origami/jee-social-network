@@ -1,10 +1,10 @@
 package fr.jcjTeam.theSocialNetwork.beans;
 
-import java.sql.Timestamp;
-
 public class User {
 
 	private String id;
+	private String name;
+	private String surname;
 	private String password;
 	private Boolean administrator;
 	
@@ -25,6 +25,18 @@ public class User {
 	}
 	public void setAdministrator(Boolean administrator) {
 		this.administrator = administrator;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 	
 }
