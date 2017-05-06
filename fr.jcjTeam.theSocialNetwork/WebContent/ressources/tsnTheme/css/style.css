@@ -1,0 +1,163 @@
+*{
+	box-sizing: border-box;
+	color: white;
+}
+
+body header nav.navbar.navbar-default {
+    margin-bottom: 0px;
+    background-color: #011221;
+    border: 0;
+    border-radius: 0;
+}
+
+body header nav.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,0);
+}
+
+body header nav.navbar-default button.navbar-toggle{
+	border-color: rgba(255,255,255,0);
+	-webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+}
+
+body header nav.navbar-default button.navbar-toggle:hover, body header nav.navbar-default button.navbar-toggle:focus{
+	background-color: rgba(255,255,255,0);
+	opacity: 0.6;
+}
+
+body header nav.navbar-default button.navbar-toggle span.icon-bar{
+	background-color:white;	
+}
+
+body div.mainSection section{
+	height: calc(100vh - 50px);
+	display: block;
+	background-image: url('http://www.photo-paysage.com/albums/userpics/10001/Au-pied-des-sequoias-geants-de-Mariposa-grove.jpg');
+	background-size: cover;	
+	background-attachement:fixed;
+	background-position: center;
+}
+
+body div.mainSection section div.shadowEffect{
+	height: calc(100vh - 50px);
+	min-height: calc(100vh - 50px);
+	overflow:scroll;
+	background-color: rgba(2, 15, 27, 0.56);
+}
+
+body div.mainSection section div.shadowEffect > div{
+	min-height: inherit;
+    display: table;
+    table-layout: fixed;
+}
+	
+body div.mainSection section div.shadowEffect div.mainTitle h1{
+	font-size: 55px;
+	display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+
+body div.mainSection section div.shadowEffect div.logArea{
+	padding:0 50px;
+}
+
+body div.mainSection section div.shadowEffect div.logArea > div{
+	display:table-cell;
+    vertical-align:middle;
+    padding: 0 20px;
+    background-color: rgba(56, 76, 95, 0.56);
+}
+
+body div.mainSection section div.shadowEffect div.logArea > div > div{
+	text-align:center;
+	background-color:white;
+	border-radius:5px;
+	color: #333;
+	width:100%;	
+	padding: 20px;
+}
+
+body div .nav-tabs {
+    border-bottom: 1px solid #a75501;
+}
+
+body div nav.navbar ul.nav li.dropdown a.dropdown-toggle{
+	color:white;
+}
+
+body div nav.navbar ul.nav li.dropdown.open a.dropdown-toggle{
+	background-color: rgba(255, 255, 255, 0);
+}
+
+body div .nav-tabs > li.active > a, body div .nav-tabs > li.active > a:focus, body div .nav-tabs > li.active > a:hover {
+    color: white;
+    background-color: #a75501;
+    border: 0;
+}
+
+body div .nav-tabs > li > a{
+	border:0;
+	color: #675f5f;
+}
+
+body div .nav > li > a:hover {
+    text-decoration: none;
+    background-color: rgba(195, 100, 3, 0.23);
+}
+
+body div div.tab-content div *{
+	color: #333;
+	text-center;
+}
+
+body div div.input-group{
+	margin: 20px auto;
+    max-width: 350px;
+}
+
+body div div.input-group span{
+	position: relative;
+    top: 0px;	
+}
+
+body div div.input-group span.input-group-addon:first-child {
+    border-right: 0;
+    background-color: #a75501;
+    color: white;
+    border: 0;
+}
+
+body div div.tab-content button, body div div.tab-content button:hover{
+	color: white;
+    background-color: #a75501;
+    border: 0;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    transition: opacity 0.8s;	
+}
+
+body div div.tab-content button:hover{
+	opacity: 0.7;	
+}
+
+@media screen and (max-width: 992px) {
+	body div.mainSection section div.shadowEffect div.logArea > div {
+		display: inline-block;
+    	vertical-align: middle;
+    	padding: 0;
+    	width:100%;
+    	background-color: rgba(255,255,255,0);
+	}
+	
+	body div.mainSection section div.shadowEffect > div.logArea {
+	    min-height: inherit;
+	    display: inline-block;
+	    table-layout: initial;
+	    padding:30px 30px;
+	}
+}
+
+
+
