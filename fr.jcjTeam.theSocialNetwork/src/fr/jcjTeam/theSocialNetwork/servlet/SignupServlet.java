@@ -42,7 +42,7 @@ public class SignupServlet extends HttpServlet {
 		System.out.println(request.getParameter(Constant.EMAIL));
 		System.out.println(request.getParameter(Constant.PASSWORD));
 		//doGet(request, response);
-		request.getRequestDispatcher("/signin").forward(request, response);
+		request.getRequestDispatcher("/"+Constant.SIGNIN).forward(request, response);
 	}
 
 }

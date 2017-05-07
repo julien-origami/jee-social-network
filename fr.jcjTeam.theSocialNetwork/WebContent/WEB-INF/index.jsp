@@ -1,5 +1,5 @@
 <%@page import="fr.jcjTeam.theSocialNetwork.beans.Constant"%>
-<jsp:include page="/header.jsp">
+<jsp:include page="/WEB-INF/header.jsp">
 	<jsp:param name="title" value="The Social Network - Bienvenue sur la super communauté" />
 </jsp:include>
 	<div class="mainSection">
@@ -69,4 +69,4 @@
 		</section>
 	</div>
 
-<jsp:include page="/footer.jsp" />
+<jsp:include page="/WEB-INF/footer.jsp" />

@@ -1,6 +1,7 @@
 package fr.jcjTeam.theSocialNetwork.beans;
 
 public class Constant {
+	public final static String WEBFILEPATH = "/WEB-INF/";
 	public final static String SIGNIN = "signin";
 	public final static String SIGNUP = "signup";
 	public final static String SIGNOUT = "signout";
