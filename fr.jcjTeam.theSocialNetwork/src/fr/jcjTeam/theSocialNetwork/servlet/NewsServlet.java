@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class NewsServlet
  */
-@WebServlet("/"+Constant.SIGNIN)
-public class LoginServlet extends HttpServlet {
+@WebServlet("/"+Constant.NEWS)
+public class NewsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public NewsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +29,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		request.getRequestDispatcher("news.jsp").forward(request, response);
 	}
 
@@ -38,10 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(request.getParameter(Constant.EMAIL));
-		System.out.println(request.getParameter(Constant.PASSWORD));
-		//doGet(request, response);
-		request.getRequestDispatcher("/"+Constant.NEWS).forward(request, response);
+		doGet(request, response);
 	}
 
 }
