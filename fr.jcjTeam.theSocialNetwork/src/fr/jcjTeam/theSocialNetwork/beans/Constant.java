@@ -11,4 +11,6 @@ public class Constant {
 	public final static String PASSWORD_CONFIRMED = "passwordConfirmed";
 	public final static String NAME = "name";
 	public final static String SURNAME = "surname";
+	public final static String USER = "user";
+	public final static String FORM = "form";
 }
