@@ -33,8 +33,11 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		request.getRequestDispatcher(Constant.WEBFILEPATH+Constant.NEWS+".jsp").forward(request, response);
+		if(request.getSession().getAttribute(Constant.USER)!= null){
+			request.getRequestDispatcher("/"+Constant.NEWS).forward(request, response);
+		}else{
+			request.getRequestDispatcher("/").forward(request, response);
+		}
 	}
 
 	/**
@@ -65,8 +68,7 @@ public class LoginServlet extends HttpServlet {
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( Constant.FORM, (IForm)signinForm );
         request.setAttribute( Constant.USER, user);
-		//doGet(request, response);
-		request.getRequestDispatcher("/"+Constant.NEWS).forward(request, response);
+		doGet(request, response);
 	}
 
 }

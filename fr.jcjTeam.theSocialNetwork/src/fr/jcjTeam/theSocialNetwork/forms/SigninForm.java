@@ -36,6 +36,10 @@ public class SigninForm implements IForm{
             setMistakes( CHAMP_EMAIL, e.getMessage() );
         }
         user.setId( email );
+        user.setName("Julien");
+        user.setSurname("PONS");
+        user.setPassword("pass");
+        user.setAdministrator(true);
 
         /* Initialisation du résultat global de la validation. */
         if ( mistakes.isEmpty() ) {
