@@ -39,13 +39,9 @@ public class NewsServlet extends AuthenticatorServlet {
 		User user = (User) request.getSession().getAttribute(Constant.USER);
 		ArrayList<Message> messages = new ArrayList<>();
 		for(int i=0;i<10;i++){
-			Message mes = new Message();
-			mes.setAuthor(user);
-			mes.setContent("Lorem Ipsum dolor sit amet Voici un objet bien pratique. ArrayList est un de ces objets qui n'ont pas de taille limite et qui, en plus, acceptent n'importe quel type de données, y compris null ! Nous pouvons mettre tout ce que nous voulons dans un ArrayList, voici un morceau de code qui le prouve :");
-			mes.setId(new Long(i));
-			mes.setStatus(Status.PUBLIC);
-			mes.setTitle("Mon Tilte "+i);
-			mes.setUpdateDate(new Timestamp(System.currentTimeMillis()));
+			//Long id, String title, String content, User author, Timestamp creationDate, Timestamp updateDate, Status status
+			String content = "Lorem Ipsum dolor sit amet Voici un objet bien pratique. ArrayList est un de ces objets qui n'ont pas de taille limite et qui, en plus, acceptent n'importe quel type de données, y compris null ! Nous pouvons mettre tout ce que nous voulons dans un ArrayList, voici un morceau de code qui le prouve :";
+			Message mes = new Message(new Long(i), "Mon Tilte "+i, content, user, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), Status.PUBLIC);
 			messages.add(mes);
 		}
 		request.setAttribute(Constant.MESSAGES, messages);

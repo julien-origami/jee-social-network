@@ -42,8 +42,10 @@
 							        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.getName() %><span class="caret"></span></a>
 							        		<ul class="dropdown-menu">
 							          			<li><a href="${pageContext.request.contextPath}/<% out.print(Constant.SIGNOUT); %>">Logout</a></li>
+							          			<% if(user.getAdministrator()){ %>
 							          			<li><a href="#">Panel Administrateur</a></li>
-							          			<li><a href="#">Mon compte</a></li>
+							          			<% } %>
+							          			<li><a href="${pageContext.request.contextPath}/<% out.print(Constant.ACCOUNT); %>">Mon compte</a></li>
 							        		</ul>
 							    		</li>
 							    	</ul>

@@ -168,7 +168,16 @@ div.news{
 
 div.news div.shadowEffect div.newsSection{
 	background-color: rgba(56, 76, 95, 0.56);
-	padding: 20px;
+	padding: 0 20px;
+}
+
+div.news div.shadowEffect div.newsSection span.separator{
+	background-color: #a75501;
+    height: 1px;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+    max-width: 180px;
 }
 
 div.news div.shadowEffect div.newsSection div.message{
@@ -185,4 +194,11 @@ div.news div.shadowEffect div.newsSection div.message h3{
 
 div.message i, div.message h6, div.message p{
 	color: #333;
+}
+
+div.account{
+	background-image: url('../images/background_account.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
