@@ -19,7 +19,7 @@ import fr.jcjTeam.theSocialNetwork.beans.User;
  * Servlet implementation class NewsServlet
  */
 @WebServlet("/"+Constant.NEWS)
-public class NewsServlet extends HttpServlet {
+public class NewsServlet extends AuthenticatorServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -27,7 +27,7 @@ public class NewsServlet extends HttpServlet {
      */
     public NewsServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.path = Constant.WEBFILEPATH+Constant.NEWS+".jsp";
     }
 
 	/**
@@ -50,14 +50,13 @@ public class NewsServlet extends HttpServlet {
 		}
 		request.setAttribute(Constant.MESSAGES, messages);
 		/* ######## */
-		request.getRequestDispatcher(Constant.WEBFILEPATH+Constant.NEWS+".jsp").forward(request, response);
+		this.redirectionSystem(false, request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

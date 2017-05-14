@@ -39,7 +39,7 @@ body div.mainSection section{
 	background-position: center;
 }
 
-body div.mainSection section div.shadowEffect{
+body div.mainSection section div.shadowEffect, div.shadowEffect{
 	height: calc(100vh - 50px);
 	min-height: calc(100vh - 50px);
 	overflow:scroll;
@@ -159,5 +159,30 @@ body div div.tab-content button:hover{
 	}
 }
 
+div.news{
+	background-image: url('../images/background_news.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;    
+}
 
+div.news div.shadowEffect div.newsSection{
+	background-color: rgba(56, 76, 95, 0.56);
+	padding: 20px;
+}
 
+div.news div.shadowEffect div.newsSection div.message{
+	background-color: white;
+	border-radius: 5px;
+	padding: 20px;
+	margin: 20px 0;
+}
+
+div.news div.shadowEffect div.newsSection div.message h3{
+	color: #a75501;
+	font-size: 25px;
+}
+
+div.message i, div.message h6, div.message p{
+	color: #333;
+}

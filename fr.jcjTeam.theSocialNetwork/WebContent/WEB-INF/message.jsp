@@ -4,8 +4,8 @@
 <% ArrayList<Message> messages = (ArrayList<Message>) request.getAttribute(Constant.MESSAGES);
 for ( Message message : messages){ %>
 	<div class="message">
-		<h1><% out.print(message.getTitle()); %></h1>
-		<h6><% out.print(message.getAuthor()); %><i><% out.print(message.getUpdateDate()); %></i></h6>
+		<h3><% out.print(message.getTitle()); %></h3>
+		<h6><% out.print(message.getAuthor().getName()+" "+message.getAuthor().getSurname()); %> <i><% out.print(message.getUpdateDate()); %></i></h6>
 		<p><% out.print(message.getContent()); %></p>
 	</div>
 <% } %>
