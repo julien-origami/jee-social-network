@@ -15,4 +15,6 @@ public class Constant {
 	public final static String FORM = "form";
 	public final static String MESSAGES = "messages";
 	public final static String ACCOUNT = "myaccount";
+	public final static String UPDATEMESSAGE = "updatemessage";
+	public final static String UPDATEUSER = "updateuser";
 }

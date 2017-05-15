@@ -29,7 +29,7 @@
 								    <span class="icon-bar"></span>
 						      		<span class="icon-bar"></span>
 						    	</button>
-						    	<a class="navbar-brand" href="#">
+						    	<a class="navbar-brand" href="${pageContext.request.contextPath}/<% out.print(Constant.NEWS); %>">
 						    		<span class="glyphicon glyphicon-home"></span>
 						    	</a>
 						  	</div>
