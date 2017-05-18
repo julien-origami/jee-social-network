@@ -8,6 +8,17 @@ public class User {
 	private String password;
 	private Boolean administrator;
 	
+	public User(){
+		
+	}
+	
+	public User(String id, Boolean administrator, String name, String surname){
+		this.id = id;
+		this.administrator = administrator;
+		this.name = name;
+		this.surname = surname;
+	}
+	
 	public String getId() {
 		return id;
 	}

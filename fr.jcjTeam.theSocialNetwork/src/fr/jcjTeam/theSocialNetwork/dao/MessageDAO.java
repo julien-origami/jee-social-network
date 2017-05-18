@@ -17,7 +17,7 @@ public class MessageDAO implements IMessageDao {
 	@Override
 	public List<Message> getListOfMessages(User user) {
 		List<Message> messages = new ArrayList<>();
-		Connection con = ConectionTool.getConnection();
+		Connection con = ConnectionTool.getConnection();
 		if(con != null){
 			try{
 				Statement stmt = con.createStatement();

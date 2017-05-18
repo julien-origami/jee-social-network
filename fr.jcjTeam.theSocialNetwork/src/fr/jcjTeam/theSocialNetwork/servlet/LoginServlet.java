@@ -39,9 +39,6 @@ public class LoginServlet extends AuthenticatorServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println(request.getParameter(Constant.EMAIL));
-		System.out.println(request.getParameter(Constant.PASSWORD));
 		SigninForm signinForm = new SigninForm();
 
         /* Traitement de la requête et récupération du bean en résultant */

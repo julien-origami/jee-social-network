@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.User;
+import fr.jcjTeam.theSocialNetwork.dao.UserDAO;
 
 public class SigninForm implements IForm{
 	private static final String CHAMP_EMAIL  = Constant.EMAIL;
@@ -38,7 +39,7 @@ public class SigninForm implements IForm{
         user.setId( email );
         user.setName("Julien");
         user.setSurname("PONS");
-        user.setPassword("pass");
+        user.setPassword(password);
         user.setAdministrator(true);
 
         /* Initialisation du résultat global de la validation. */
@@ -53,10 +54,13 @@ public class SigninForm implements IForm{
 
     
     /*TODO Vérification en BDD Use IUserDao !!*/
-    private void userExist( String email ) throws Exception {
-        /*if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-            throw new Exception( "Merci de saisir une adresse mail valide." );
-        }*/
+    private User userExist( String email ) throws Exception {
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getUserById(email);
+    	if (user==null) {
+            throw new Exception( "Login / Mot de passe inconnue" );
+        }
+		return user;
     }
     
     

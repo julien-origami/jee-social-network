@@ -33,7 +33,7 @@ body header nav.navbar-default button.navbar-toggle span.icon-bar{
 body div.mainSection section{
 	height: calc(100vh - 50px);
 	display: block;
-	background-image: url('http://www.photo-paysage.com/albums/userpics/10001/Au-pied-des-sequoias-geants-de-Mariposa-grove.jpg');
+	background-image: url('../images/background_index.jpg');
 	background-size: cover;	
 	background-attachement:fixed;
 	background-position: center;
