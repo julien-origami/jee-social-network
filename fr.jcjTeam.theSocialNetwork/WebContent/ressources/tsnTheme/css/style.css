@@ -206,6 +206,7 @@ div.account{
 div.account div.shadowEffect div.accountSection{
 	background-color: rgba(56, 76, 95, 0.56);
 	padding: 0 20px;
+	min-height: calc( 100vh - 50px );
 }
 
 div.myaccount, div.mymessages{
@@ -237,16 +238,17 @@ body textarea{
     resize: none;
 }
 
-body textarea.title{
+body textarea.title, body div.mymessages h4{
     font-size: 20px;
     margin-top: 30px;
+    color: #333;
 }
 
 div.submitSection{
 	text-align: center;
 }
 
-div.myaccount input.submit, div.mymessages input.submit{
+div.myaccount button.submit, div.mymessages button.submit{
 	border: none;
     border-radius: 4px;
     background-color: #a75501;
@@ -259,7 +261,18 @@ div.myaccount input.submit, div.mymessages input.submit{
     color:white;
 }
 
-div.myaccount input.submit:hover, div.mymessages input.submit:hover{
+div.myaccount button.submit span.glyphicon, div.mymessages button.submit span.glyphicon{
+	padding: 5px 10px;
+	font-size:1.3em;
+}	
+
+div.myaccount button.submit span.submitText, div.mymessages button.submit span.submitText{ 
+	position: relative;
+    top: -4px;
+    margin-right: 5px;
+}	
+	
+div.myaccount .submit:hover, div.mymessages .submit:hover{
 	opacity: 0.6;
 }
 
@@ -308,4 +321,9 @@ div.accountInformation > form > div label{
 	font-weight: initial;	
 }	
 	
-	
+div.whiteBG{
+	margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+}

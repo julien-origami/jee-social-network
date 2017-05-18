@@ -24,7 +24,7 @@ if(messages.size()>0){
 				<textarea data-autoresize name="content" class="content"><% out.print(message.getContent()); %></textarea>
 			</div>
 			<div class="submitSection hidden">
-				<input class="submit" type="submit" value="Enregistrer les modifications"/>
+				<button type="submit" class="submit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="submitText">Enregistrer les modifications</span></button>
 			</div>
 		</form>
 	</div>

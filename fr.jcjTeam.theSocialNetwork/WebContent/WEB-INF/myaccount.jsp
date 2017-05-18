@@ -36,8 +36,8 @@
 										<label>Nouveau mot de passe</label>
 										<input type="password" name="newPassword" id="newPassword" placeholder="Saisissez votre nouveau mot de passe"/>
 									</div>
-									<div>
-										<input type="submit" class="submit" value="Enregistrer les modifications"/>
+									<div class="hidden">
+										<button type="submit" class="submit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="submitText">Enregistrer les modifications</span></button>
 									</div>
 								</form>
 							</div>
@@ -61,6 +61,9 @@
 	    }).removeAttr('data-autoresize');
 	});
 	$('textarea').keyup(function(){
+		$(this).parent().parent().find('div.hidden').removeClass('hidden');
+	});
+	$('input').keyup(function(){
 		$(this).parent().parent().find('div.hidden').removeClass('hidden');
 	});
 	$('.btnLargeTop ul li a').click(function(){

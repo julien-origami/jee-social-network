@@ -43,7 +43,7 @@
 							        		<ul class="dropdown-menu">
 							          			<li><a href="${pageContext.request.contextPath}/<% out.print(Constant.SIGNOUT); %>">Logout</a></li>
 							          			<% if(user.getAdministrator()){ %>
-							          			<li><a href="#">Panel Administrateur</a></li>
+							          			<li><a href="${pageContext.request.contextPath}/<% out.print(Constant.ADMIN); %>">Panel Administrateur</a></li>
 							          			<% } %>
 							          			<li><a href="${pageContext.request.contextPath}/<% out.print(Constant.ACCOUNT); %>">Mon compte</a></li>
 							        		</ul>

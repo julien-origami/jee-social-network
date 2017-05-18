@@ -23,9 +23,14 @@ public abstract class AuthenticatorServlet extends HttpServlet {
         super();
     }
 
-	protected void redirectionSystem(Boolean autorisationRequired, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	protected boolean redirectionSystem(Boolean autorisationRequired, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		Boolean res = false;
 		IConnectionService connectionService = (IConnectionService) new ConnectionService();
 		String resPath = connectionService.needToBeRedirected(path, autorisationRequired, (User)request.getSession().getAttribute(Constant.USER));
 		request.getRequestDispatcher(resPath).forward(request, response);
+		if(!resPath.equals("/")){
+			res = true;
+		}
+		return res;
 	}
 }
