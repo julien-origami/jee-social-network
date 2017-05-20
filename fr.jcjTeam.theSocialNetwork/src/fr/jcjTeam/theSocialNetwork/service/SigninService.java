@@ -1,6 +1,5 @@
 package fr.jcjTeam.theSocialNetwork.service;
 
-import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.User;
 
 public class SigninService implements IConnectionService{
@@ -16,7 +15,6 @@ public class SigninService implements IConnectionService{
 
 	@Override
 	public String needToBeRedirected(String path, Boolean autorisationRequired, User user) {
-		/*Implement redirection method by geting session user*/
 		Boolean isAuthorized;
 		String finalPath = "/";
 		if(user!=null){
