@@ -12,6 +12,7 @@
 					<div class="mymessages col-md-8">
 						<div>
 							<h2>Mes messages</h2>
+							<h5>Modifiez simplement vos précédents messages en cliquant directement sur les textes.</h5>
 							<jsp:include page="/WEB-INF/messageUpdate.jsp" />
 						</div>
 					</div>
@@ -21,19 +22,19 @@
 							<div class="accountInformation">
 								<form method="POST" action="${pageContext.request.contextPath}/<% out.print(Constant.UPDATEUSER); %>">
 									<div>
-										<label>Prénom</label>
+										<label for="name">Prénom</label>
 										<input type="text" value="<% out.print(user.getName()); %>" name="name" id="name"/>
 									</div>
 									<div>
-										<label>Nom</label>
+										<label for="surname">Nom</label>
 										<input type="text" value="<% out.print(user.getSurname()); %>" name="surname" id="surname"/>
 									</div>
 									<div>
-										<label>Mot de passe</label>
+										<label for="oldPassword">Mot de passe</label>
 										<input type="password" name="oldPassword" id="oldPassword" placeholder="Saisissez votre mot de passe"/>
 									</div>
 									<div>
-										<label>Nouveau mot de passe</label>
+										<label for="newPassword">Nouveau mot de passe</label>
 										<input type="password" name="newPassword" id="newPassword" placeholder="Saisissez votre nouveau mot de passe"/>
 									</div>
 									<div class="hidden">

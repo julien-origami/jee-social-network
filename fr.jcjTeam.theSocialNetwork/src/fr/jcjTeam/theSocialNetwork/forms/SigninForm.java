@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.User;
-import fr.jcjTeam.theSocialNetwork.dao.UserDAO;
+import fr.jcjTeam.theSocialNetwork.service.UserService;
 
 public class SigninForm implements IForm{
 	private static final String CHAMP_EMAIL  = Constant.EMAIL;
@@ -32,15 +32,10 @@ public class SigninForm implements IForm{
 
         /* Validation du champ email. */
         try {
-            userExist( email );
+            user = userExist( email, password );
         } catch ( Exception e ) {
             setMistakes( CHAMP_EMAIL, e.getMessage() );
         }
-        user.setId( email );
-        user.setName("Julien");
-        user.setSurname("PONS");
-        user.setPassword(password);
-        user.setAdministrator(true);
 
         /* Initialisation du résultat global de la validation. */
         if ( mistakes.isEmpty() ) {
@@ -54,11 +49,12 @@ public class SigninForm implements IForm{
 
     
     /*TODO Vérification en BDD Use IUserDao !!*/
-    private User userExist( String email ) throws Exception {
-        UserDAO userDAO = new UserDAO();
-        User user = userDAO.getUserById(email);
-    	if (user==null) {
-            throw new Exception( "Login / Mot de passe inconnue" );
+    private User userExist( String email, String password ) throws Exception {
+        UserService userService = new UserService();
+        User user = userService.getUserById(email);
+        String currentPassword = userService.getHashPassword(password);
+    	if ( user==null || !currentPassword.equals(user.getPassword()) ) {
+            throw new Exception( "Login / Mot de passe incorrect" );
         }
 		return user;
     }

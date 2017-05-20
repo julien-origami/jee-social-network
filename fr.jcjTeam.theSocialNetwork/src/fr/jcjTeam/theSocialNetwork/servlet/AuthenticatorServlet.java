@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.User;
-import fr.jcjTeam.theSocialNetwork.service.ConnectionService;
+import fr.jcjTeam.theSocialNetwork.service.SigninService;
 import fr.jcjTeam.theSocialNetwork.service.IConnectionService;
 
 /**
@@ -25,7 +25,7 @@ public abstract class AuthenticatorServlet extends HttpServlet {
 
 	protected boolean redirectionSystem(Boolean autorisationRequired, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Boolean res = false;
-		IConnectionService connectionService = (IConnectionService) new ConnectionService();
+		IConnectionService connectionService = (IConnectionService) new SigninService();
 		String resPath = connectionService.needToBeRedirected(path, autorisationRequired, (User)request.getSession().getAttribute(Constant.USER));
 		request.getRequestDispatcher(resPath).forward(request, response);
 		if(!resPath.equals("/")){

@@ -3,6 +3,10 @@
 	color: white;
 }
 
+body h2, body h3, body h4, body h5, body h6, body p{
+	color:#333;
+}
+
 body header nav.navbar.navbar-default {
     margin-bottom: 0px;
     background-color: #011221;
@@ -187,6 +191,12 @@ div.news div.shadowEffect div.newsSection div.message{
 	margin: 20px 0;
 }
 
+div.news div.shadowEffect div.newsSection div.formMessage{
+	margin-top: 0;
+    border-radius: 0 0 5px 5px;
+    padding-top: 1px;
+}
+
 div.news div.shadowEffect div.newsSection div.message h3{
 	color: #a75501;
 	font-size: 25px;
@@ -236,6 +246,35 @@ body textarea{
     width: 100%;
     border: none;
     resize: none;
+    margin-top: 3px;
+}
+
+body textarea.border{
+    padding: 0.4em 0.4em;
+    margin: 5px 0;
+    border: 1px solid #c7c1c1;
+    border-radius: 3px;
+    height: 35px;
+}
+
+body textarea.border.content{
+    min-height: 100px;
+}
+
+button.deleteButton {
+    color: #a75501;
+    font-size: 1.5em;
+    background: white;
+    border: none;
+    margin-top: 35px;
+    opacity: 0.3;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+}
+
+button.deleteButton:hover, button.deleteButton:focus {
+    opacity: 1;
 }
 
 body textarea.title, body div.mymessages h4{
@@ -248,7 +287,7 @@ div.submitSection{
 	text-align: center;
 }
 
-div.myaccount button.submit, div.mymessages button.submit{
+button.submit{
 	border: none;
     border-radius: 4px;
     background-color: #a75501;
@@ -261,18 +300,18 @@ div.myaccount button.submit, div.mymessages button.submit{
     color:white;
 }
 
-div.myaccount button.submit span.glyphicon, div.mymessages button.submit span.glyphicon{
+button.submit span.glyphicon, button.submit span.glyphicon{
 	padding: 5px 10px;
 	font-size:1.3em;
 }	
 
-div.myaccount button.submit span.submitText, div.mymessages button.submit span.submitText{ 
+button.submit span.submitText, button.submit span.submitText{ 
 	position: relative;
     top: -4px;
     margin-right: 5px;
 }	
 	
-div.myaccount .submit:hover, div.mymessages .submit:hover{
+.submit:hover, .submit:hover{
 	opacity: 0.6;
 }
 
@@ -326,4 +365,22 @@ div.whiteBG{
     padding: 20px;
     background-color: white;
     border-radius: 5px;
+}
+
+a.linkToNews {
+    color: white;
+    background-color: #a75501;
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    display: inline-block;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+}
+
+a.linkToNews:hover {
+    opacity: 0.8;
+    color: white;
+    text-decoration: none;
 }

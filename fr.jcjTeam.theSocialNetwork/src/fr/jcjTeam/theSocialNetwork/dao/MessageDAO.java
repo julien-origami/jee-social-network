@@ -1,10 +1,9 @@
 package fr.jcjTeam.theSocialNetwork.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,27 +13,27 @@ import fr.jcjTeam.theSocialNetwork.beans.User;
 
 public class MessageDAO implements IMessageDao {
 
+	public Connection connection;
+	
+	public MessageDAO() {
+		connection = ConnectionTool.getConnection();
+	}
+	
 	@Override
 	public List<Message> getListOfMessages(User user) {
 		List<Message> messages = new ArrayList<>();
-		Connection con = ConnectionTool.getConnection();
-		if(con != null){
-			try{
-				Statement stmt = con.createStatement();
-				ResultSet result = stmt.executeQuery("SELECT * FROM MESSAGES WHERE USER_ID='"+user.getId()+"'");
-				while(result.next()){
-					/*Fake test code*/
-			
-			//		Message message = new Message(Long.valueOf(result.getInt(1)), result.getString(2), result.getString(3), user, , Timestamp updateDate, Status status){);
-					//message.setId(Long.valueOf(result.getInt(1)));
-					//message.setTitle(result.getString(2));
-					//messages.add(message);
-				}
-			}catch(SQLException e){
-				return null;
-			}
-		}else{
-			return null;
+		ResultSet resultats = null;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MESSAGES WHERE ID = ?");
+			preparedStatement.setString(1, user.getId());
+			resultats = preparedStatement.executeQuery();
+			while(resultats.next()) {
+				Message mes = new Message(resultats.getLong(1), resultats.getString(2), resultats.getString(3), user, resultats.getTimestamp(5), resultats.getTimestamp(6), Status.values()[resultats.getInt(7)] );
+				messages.add(mes);
+			}		
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return messages;
 	}

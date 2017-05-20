@@ -11,5 +11,5 @@ public interface IUserService {
 	void addUser(User user);
 	void updateUser(User user);
 	void deleteUser(User user);
-
+	String getHashPassword(String password);
 }

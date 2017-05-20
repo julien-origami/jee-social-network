@@ -10,7 +10,7 @@ public class ConnectionTool {
 	private static Connection connection;
 
 	public static void main(String[] args) {
-		/*Connection con = ConectionTool.getConnection();
+		Connection con = ConnectionTool.getConnection();
 		if(con != null){
 			System.out.println(con.toString());
 			try{
@@ -19,7 +19,7 @@ public class ConnectionTool {
 				e.printStackTrace();
 			}
 		}
-		MessageDAO mdao = new MessageDAO();
+		/*MessageDAO mdao = new MessageDAO();
 		User user = new User();
 		user.setId("ADMIN");
 		System.out.println(mdao.getListOfMessages(user).toString());*/

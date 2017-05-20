@@ -5,28 +5,37 @@
 if(messages.size()>0){
 	for ( Message message : messages){ %>
 	<div class="message">
-		<form method="POST" action="${pageContext.request.contextPath}/<% out.print(Constant.UPDATEMESSAGE); %>">
-			<div class="col-md-8">
-				<textarea data-autoresize name="title" class="title"><% out.print(message.getTitle()); %></textarea>
+		<div class="col-md-1">
+			<form method="POST" action="#">
+				<button class="glyphicon glyphicon-trash deleteButton"></button>
+			</form>
+		</div>
+		<div class="col-md-11">
+			<div class="row">
+				<form method="POST" action="${pageContext.request.contextPath}/<% out.print(Constant.UPDATEMESSAGE); %>">
+					<div class="col-md-8">
+						<textarea data-autoresize name="title" class="title"><% out.print(message.getTitle()); %></textarea>
+					</div>
+					<div class="col-md-4 btnLargeTop">
+					  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						    Public
+					    	<span class="caret"></span>
+					  	</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+							<li><a href="#">Public</a></li>
+							<li class="disabled"><a href="#">Privé</a></li>
+							<li><a href="#">Archivé</a></li>
+						</ul>
+					</div>
+					<div>
+						<textarea data-autoresize name="content" class="content"><% out.print(message.getContent()); %></textarea>
+					</div>
+					<div class="submitSection hidden">
+						<button type="submit" class="submit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="submitText">Enregistrer les modifications</span></button>
+					</div>
+				</form>
 			</div>
-			<div class="col-md-4 btnLargeTop">
-			  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    Public
-			    	<span class="caret"></span>
-			  	</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-					<li><a href="#">Public</a></li>
-					<li class="disabled"><a href="#">Privé</a></li>
-					<li><a href="#">Archivé</a></li>
-				</ul>
-			</div>
-			<div>
-				<textarea data-autoresize name="content" class="content"><% out.print(message.getContent()); %></textarea>
-			</div>
-			<div class="submitSection hidden">
-				<button type="submit" class="submit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="submitText">Enregistrer les modifications</span></button>
-			</div>
-		</form>
+		</div>
 	</div>
 	<div>
 		<span class="separator"></span>

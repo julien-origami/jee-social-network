@@ -1,8 +1,9 @@
 package fr.jcjTeam.theSocialNetwork.service;
 
+import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.User;
 
-public class ConnectionService implements IConnectionService{
+public class SigninService implements IConnectionService{
 
 	@Override
 	public boolean isAuthorized(User user) {
@@ -27,7 +28,7 @@ public class ConnectionService implements IConnectionService{
 			isAuthorized = false;
 		}
 		if(isAuthorized){
-			finalPath = "/"+path;
+			finalPath += path;
 		}
 		return finalPath;
 	}

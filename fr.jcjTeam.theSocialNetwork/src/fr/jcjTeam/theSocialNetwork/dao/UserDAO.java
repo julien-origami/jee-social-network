@@ -1,6 +1,5 @@
 package fr.jcjTeam.theSocialNetwork.dao;
 
-import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +9,13 @@ import java.util.List;
 import fr.jcjTeam.theSocialNetwork.beans.User;
 
 public class UserDAO implements IUserDao{
-
+	
+	public Connection connection;
+	
+	public UserDAO() {
+		connection = ConnectionTool.getConnection();
+	}
+	
 	@Override
 	public List<User> getListOfUsers() {
 		// TODO Auto-generated method stub
@@ -19,24 +24,20 @@ public class UserDAO implements IUserDao{
 
 	@Override
 	public User getUserById(String id) {
-		Connection connection = ConnectionTool.getConnection();
 		ResultSet resultats = null;
+		User user = null;
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USERS WHERE ID = ?");
 			preparedStatement.setString(1, id);
 			resultats = preparedStatement.executeQuery();
-			System.out.println(preparedStatement.getParameterMetaData());
 			while(resultats.next()) {
-				System.out.println(resultats.getString(0));
-				System.out.println(resultats.getString(1));
-				System.out.println(resultats.getString(2));
-				System.out.println(resultats.getString(4));
+				user = new User(resultats.getString(1), resultats.getString(2), resultats.getString(3), resultats.getString(4), resultats.getBoolean(5));
 			}		
 			preparedStatement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return user;
 	}
 
 	@Override

@@ -12,8 +12,16 @@ public class User {
 		
 	}
 	
-	public User(String id, Boolean administrator, String name, String surname){
+	public User(String id, String name, String surname, Boolean administrator){
 		this.id = id;
+		this.administrator = administrator;
+		this.name = name;
+		this.surname = surname;
+	}
+	
+	public User(String id, String name, String surname, String password, Boolean administrator){
+		this.id = id;
+		this.password = password;
 		this.administrator = administrator;
 		this.name = name;
 		this.surname = surname;
@@ -22,20 +30,11 @@ public class User {
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public Boolean getAdministrator() {
 		return administrator;
-	}
-	public void setAdministrator(Boolean administrator) {
-		this.administrator = administrator;
 	}
 	public String getName() {
 		return name;
