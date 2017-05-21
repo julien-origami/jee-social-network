@@ -6,24 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
-import fr.jcjTeam.theSocialNetwork.beans.User;
-import fr.jcjTeam.theSocialNetwork.forms.IForm;
-import fr.jcjTeam.theSocialNetwork.forms.SigninForm;
+import fr.jcjTeam.theSocialNetwork.forms.AddMessageForm;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class AddMessageServlet
  */
-@WebServlet("/"+Constant.SIGNIN)
-public class LoginServlet extends AuthenticatorServlet {
+@WebServlet("/"+Constant.ADDMESSAGE)
+public class AddMessageServlet extends AuthenticatorServlet{
 	private static final long serialVersionUID = 1L;
-
-	/**
+       
+    /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public AddMessageServlet() {
         super();
         this.path = Constant.NEWS;
     }
@@ -39,20 +36,13 @@ public class LoginServlet extends AuthenticatorServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SigninForm signinForm = new SigninForm();
-
-        User user = signinForm.canConnectUser( request );
-
-        HttpSession session = request.getSession();
-
-        if ( signinForm.getMistakes().isEmpty() ) {
-            session.setAttribute( Constant.USER, user );
-        } else {
-            session.setAttribute( Constant.USER, null );
-        }
-
-        request.setAttribute( Constant.FORM, (IForm)signinForm );
-        request.setAttribute( Constant.USER, user);
+		AddMessageForm addMessageForm = new AddMessageForm();
+		addMessageForm.canValidateForm(request);
+		
+		/**
+		 * Implement Error and Success Event on customer screen
+		 */
+		
 		doGet(request, response);
 	}
 

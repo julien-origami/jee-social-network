@@ -25,9 +25,8 @@ public class UserService implements IUserService{
 	}
 
 	@Override
-	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+	public User addUser(User user) {
+		return userDAO.addUser(user);
 	}
 
 	@Override

@@ -6,14 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
+import fr.jcjTeam.theSocialNetwork.beans.User;
+import fr.jcjTeam.theSocialNetwork.forms.IForm;
+import fr.jcjTeam.theSocialNetwork.forms.SignupForm;
 
 /**
  * Servlet implementation class SignupServlet
  */
 @WebServlet("/"+Constant.SIGNUP)
-public class SignupServlet extends HttpServlet {
+public class SignupServlet extends AuthenticatorServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -21,28 +25,36 @@ public class SignupServlet extends HttpServlet {
      */
     public SignupServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.path = Constant.NEWS;
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/"+Constant.NEWS).forward(request, response);
+		this.redirectionSystem(false, request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println(request.getParameter(Constant.NAME));
-		System.out.println(request.getParameter(Constant.SURNAME));
-		System.out.println(request.getParameter(Constant.EMAIL));
-		System.out.println(request.getParameter(Constant.PASSWORD));
-		//doGet(request, response);
-		request.getRequestDispatcher("/"+Constant.SIGNIN).forward(request, response);
+		SignupForm signupForm = new SignupForm();
+
+        User user = signupForm.canCreateUser( request );
+
+        HttpSession session = request.getSession();
+
+        if ( signupForm.getMistakes().isEmpty() ) {
+            session.setAttribute( Constant.USER, user );
+        } else {
+            session.setAttribute( Constant.USER, null );
+        }
+
+        request.setAttribute( Constant.FORM, (IForm)signupForm );
+        request.setAttribute( Constant.USER, user);
+		
+		doGet(request, response);
 	}
 
 }

@@ -13,6 +13,14 @@ public class Message {
 	private Timestamp updateDate;
 	private Status status;
 	
+	public Message(){
+		this.id = Long.MAX_VALUE;
+		this.title = "";
+		this.content = "";
+		this.status = Status.ARCHIVED;
+		
+	}
+	
 	public Message(Long id, User author, Timestamp creationDate){
 		this.id = id;
 		this.author = author;
@@ -21,6 +29,16 @@ public class Message {
 		this.title = "";
 		this.content = "";
 		this.status = Status.PUBLIC;
+	}
+	
+	public Message(String title, String content, User author, Timestamp creationDate, int status){
+		this.id = 0L;
+		this.author = author;
+		this.creationDate = creationDate;
+		this.updateDate = creationDate;
+		this.title = title;
+		this.content = content;
+		this.status = Status.values()[status];
 	}
 	
 	public Message(Long id, String title, String content, User author, Timestamp creationDate, Timestamp updateDate, Status status){
@@ -62,6 +80,9 @@ public class Message {
 	}
 	public String getUpdateDate() {
 		return toCleanDate(updateDate);
+	}
+	public Timestamp getRealUpdateDate() {
+		return updateDate;
 	}
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;

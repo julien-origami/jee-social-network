@@ -2,7 +2,7 @@ package fr.jcjTeam.theSocialNetwork.service;
 
 import fr.jcjTeam.theSocialNetwork.beans.User;
 
-public class SigninService implements IConnectionService{
+public class ConnectionService implements IConnectionService{
 
 	@Override
 	public boolean isAuthorized(User user) {

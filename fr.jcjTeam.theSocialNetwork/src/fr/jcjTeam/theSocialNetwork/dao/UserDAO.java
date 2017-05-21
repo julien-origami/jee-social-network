@@ -41,11 +41,27 @@ public class UserDAO implements IUserDao{
 	}
 
 	@Override
-	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
-		
-		
+	public User addUser(User user) {
+		User userExist = this.getUserById(user.getId());
+		int canAddUser=-1;
+		if(userExist == null){
+			try {
+				PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USERS (ID, NAME, SURNAME, PASSWORD, ISADMINISTRATOR) VALUES( ? , ? , ? , ? , ? );");
+				preparedStatement.setString(1, user.getId());
+				preparedStatement.setString(2, user.getName());
+				preparedStatement.setString(3, user.getSurname());
+				preparedStatement.setString(4, user.getPassword());
+				preparedStatement.setBoolean(5, user.getAdministrator());
+				canAddUser = preparedStatement.executeUpdate();
+				preparedStatement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if(canAddUser != 1 || userExist != null){
+			user = null;
+		}
+		return user;
 	}
 
 	@Override

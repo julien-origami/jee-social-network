@@ -8,7 +8,7 @@ public interface IUserService {
 
 	List<User> getListOfUsers();
 	User getUserById(String id);
-	void addUser(User user);
+	User addUser(User user);
 	void updateUser(User user);
 	void deleteUser(User user);
 	String getHashPassword(String password);
