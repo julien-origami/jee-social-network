@@ -7,35 +7,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.jcjTeam.theSocialNetwork.beans.Constant;
+import fr.jcjTeam.theSocialNetwork.beans.User;
+import fr.jcjTeam.theSocialNetwork.service.MessageService;
+
 /**
- * Servlet implementation class VersionServlet
+ * Servlet implementation class DeleteMessage
  */
-@WebServlet("/version")
-public class VersionServlet extends HttpServlet {
+@WebServlet("/"+Constant.DELETEMESSAGE)
+public class DeleteMessageServlet extends AuthenticatorServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VersionServlet() {
+    public DeleteMessageServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        this.path = Constant.ACCOUNT;
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.getRequestDispatcher("/WEB-INF/version.jsp").forward(request, response);
+		this.redirectionSystem(false, request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		User user = this.getConnectedUser(request);
+		if(user!=null){
+			MessageService messageService = new MessageService();
+			Long idMessage = Long.valueOf(Integer.parseInt(request.getParameter(Constant.IDMESSAGE)));
+			messageService.deleteMessage(idMessage, user);
+		}
 		doGet(request, response);
 	}
 

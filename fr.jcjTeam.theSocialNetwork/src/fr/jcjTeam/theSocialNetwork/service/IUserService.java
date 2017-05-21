@@ -10,6 +10,6 @@ public interface IUserService {
 	User getUserById(String id);
 	User addUser(User user);
 	void updateUser(User user);
-	void deleteUser(User user);
+	void deleteUser(String idUser);
 	String getHashPassword(String password);
 }

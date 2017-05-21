@@ -40,8 +40,21 @@ public class MessageDAO implements IMessageDao {
 
 	@Override
 	public Message getMessage(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultats = null;
+		Message mes = null;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MESSAGES JOIN USERS ON (MESSAGES.USER_ID = USERS.ID) WHERE ID = ?");
+			preparedStatement.setLong(1, id);
+			resultats = preparedStatement.executeQuery();
+			while(resultats.next()) {
+				User newUser = new User(resultats.getString(8), resultats.getString(9), resultats.getString(10), resultats.getBoolean(12));
+				mes = new Message(resultats.getLong(1), resultats.getString(2), resultats.getString(3), newUser, resultats.getTimestamp(5), resultats.getTimestamp(6), Status.values()[resultats.getInt(7)] );
+			}		
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mes;
 	}
 
 	@Override
@@ -68,9 +81,22 @@ public class MessageDAO implements IMessageDao {
 	}
 
 	@Override
-	public void deleteMessage(Message message) {
-		// TODO Auto-generated method stub
-		
+	public void deleteMessage(Long idMessage, User user) {
+		String request = "DELETE FROM MESSAGES WHERE ID = ? AND USER_ID = ? ";
+		if(user.getAdministrator()){
+			request = "DELETE FROM MESSAGES WHERE ID = ? ";
+		}
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(request);
+			preparedStatement.setLong(1, idMessage);
+			if(!user.getAdministrator()){
+				preparedStatement.setString(2, user.getId());
+			}
+			preparedStatement.executeUpdate();		
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -110,6 +136,23 @@ public class MessageDAO implements IMessageDao {
 			e.printStackTrace();
 		}
 		return messages;
+	}
+
+	@Override
+	public void updateMessage(Message message) {
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("UPDATE MESSAGES SET TITLE = ? , CONTENT = ? , STATUS = ? , UPDATE_DATE = ? WHERE ID = ? AND USER_ID = ? ");
+			preparedStatement.setString(1, message.getTitle());
+			preparedStatement.setString(2, message.getContent());
+			preparedStatement.setInt(3, message.getStatus().ordinal());
+			preparedStatement.setTimestamp(4, message.getRealUpdateDate());
+			preparedStatement.setLong(5, message.getId());
+			preparedStatement.setString(6, message.getAuthor().getId());
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -23,19 +23,19 @@
 								<form method="POST" action="${pageContext.request.contextPath}/<% out.print(Constant.UPDATEUSER); %>">
 									<div>
 										<label for="name">Prénom</label>
-										<input type="text" value="<% out.print(user.getName()); %>" name="name" id="name"/>
+										<input type="text" value="<% out.print(user.getName()); %>" name="<% out.print(Constant.NAME); %>" id="name"/>
 									</div>
 									<div>
 										<label for="surname">Nom</label>
-										<input type="text" value="<% out.print(user.getSurname()); %>" name="surname" id="surname"/>
+										<input type="text" value="<% out.print(user.getSurname()); %>" name="<% out.print(Constant.SURNAME); %>" id="surname"/>
 									</div>
 									<div>
 										<label for="oldPassword">Mot de passe</label>
-										<input type="password" name="oldPassword" id="oldPassword" placeholder="Saisissez votre mot de passe"/>
+										<input type="password" name="<% out.print(Constant.PASSWORD); %>" id="oldPassword" placeholder="Saisissez votre mot de passe"/>
 									</div>
 									<div>
 										<label for="newPassword">Nouveau mot de passe</label>
-										<input type="password" name="newPassword" id="newPassword" placeholder="Saisissez votre nouveau mot de passe"/>
+										<input type="password" name="<% out.print(Constant.PASSWORD_CONFIRMED); %>" id="newPassword" placeholder="Saisissez votre nouveau mot de passe"/>
 									</div>
 									<div class="hidden">
 										<button type="submit" class="submit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="submitText">Enregistrer les modifications</span></button>
@@ -67,8 +67,11 @@
 	$('input').keyup(function(){
 		$(this).parent().parent().find('div.hidden').removeClass('hidden');
 	});
-	$('.btnLargeTop ul li a').click(function(){
+	$('.btnLargeTop ul li label').click(function(){
 		$(this).parent().parent().parent().parent().find('div.hidden').removeClass('hidden');
+		$(this).parent().parent().find('li').removeClass('disabled');
+		$(this).parent().addClass('disabled');
+		$(this).parent().parent().parent().parent().find('span.btnText').text($(this).text());
 	});
 </script>
 <jsp:include page="/WEB-INF/footer.jsp" />

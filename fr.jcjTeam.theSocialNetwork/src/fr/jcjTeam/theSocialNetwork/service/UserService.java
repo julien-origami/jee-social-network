@@ -1,7 +1,6 @@
 package fr.jcjTeam.theSocialNetwork.service;
 
 import java.util.List;
-
 import fr.jcjTeam.theSocialNetwork.beans.User;
 import fr.jcjTeam.theSocialNetwork.dao.UserDAO;
 
@@ -14,8 +13,8 @@ public class UserService implements IUserService{
 	
 	@Override
 	public List<User> getListOfUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users = userDAO.getListOfUsers();
+		return users;
 	}
 
 	@Override
@@ -31,14 +30,12 @@ public class UserService implements IUserService{
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		userDAO.updateUser(user);
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+	public void deleteUser(String idUser) {
+		userDAO.deleteUser(idUser);
 	}
 	
 	public String getHashPassword(String password){ 

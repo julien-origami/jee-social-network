@@ -22,8 +22,7 @@ public class MessageService implements IMessageService {
 
 	@Override
 	public Message getMessage(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return messageDAO.getMessage(id);
 	}
 
 	@Override
@@ -38,9 +37,8 @@ public class MessageService implements IMessageService {
 	}
 
 	@Override
-	public void deleteMessage(Message message) {
-		// TODO Auto-generated method stub
-
+	public void deleteMessage(Long idMessage, User user) {
+		messageDAO.deleteMessage(idMessage, user);
 	}
 
 	@Override
@@ -53,6 +51,11 @@ public class MessageService implements IMessageService {
 	public List<Message> getAllMessagesForAdmin() {
 		List<Message> messages = messageDAO.getAllMessagesForAdmin(); 
 		return messages;
+	}
+
+	@Override
+	public void updateMessage(Message message) {
+		messageDAO.updateMessage(message);
 	}
 
 }

@@ -6,36 +6,40 @@ import javax.servlet.http.HttpServletRequest;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.beans.Message;
+import fr.jcjTeam.theSocialNetwork.beans.Status;
 import fr.jcjTeam.theSocialNetwork.beans.User;
 import fr.jcjTeam.theSocialNetwork.service.MessageService;
 
-public class AddMessageForm extends AForm{
-
+public class UpdateMessageForm extends AForm {
+	
 	private static final String CHAMP_TITLE  = Constant.TITLE;
     private static final String CHAMP_CONTENT   = Constant.CONTENT;
+    private static final String CHAMP_STATUS   = Constant.STATUS;
+    private static final String CHAMP_ID   = Constant.IDMESSAGE;
 
-	@Override
 	public boolean canValidateForm(HttpServletRequest request) {
         Boolean canValidate = false;
 
         try {
-            this.postMessage(request);
+            this.updateMessage(request);
         } catch ( Exception e ) {
             this.setMistakes( CHAMP_TITLE, e.getMessage() );
         }
 
         if ( mistakes.isEmpty() ) {
-            result = "Succès de la connexion.";
+            result = "Succès de la modification";
             canValidate = true;
         } else {
-            result = "Échec de la connexion.";
+            result = "Échec de la modification";
         }
 
         return canValidate;
 	}
 	
-	public void postMessage(HttpServletRequest request) throws Exception {
+	public void updateMessage(HttpServletRequest request) throws Exception {
 		String title = getValueFromRequest( request, CHAMP_TITLE );
+		Long id = Long.decode(getValueFromRequest( request, CHAMP_ID ));
+		Status status = Status.values()[Integer.parseInt(getValueFromRequest( request, CHAMP_STATUS ))];
         String content = getValueFromRequest( request, CHAMP_CONTENT );
         User user = (User) request.getSession().getAttribute(Constant.USER);
         
@@ -45,9 +49,9 @@ public class AddMessageForm extends AForm{
             throw new Exception( "Titre ou contenu trop long" );
         }else{
         	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        	Message message = new Message(title, content, user, timestamp, Constant.DEFAULTMESSAGESTATUS);
+        	Message message = new Message(id, title, content, user, timestamp, timestamp, status);
         	MessageService messageService = new MessageService();
-            messageService.addMessage(message);
+            messageService.updateMessage(message);
         }	
 	}
 

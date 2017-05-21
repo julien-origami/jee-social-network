@@ -13,6 +13,7 @@ public interface IMessageService {
 	Message getMessage(Long id);
 	void addMessage(Message message);
 	void updateMessageStatus(Message message, int status);
-	void deleteMessage(Message message);
+	void updateMessage(Message message);
+	void deleteMessage(Long idMessage, User user);
 
 }

@@ -17,9 +17,16 @@ public class Constant {
 	public final static int CONTENMAXSIZE = 255;
 	public final static int DEFAULTMESSAGESTATUS = 0;
 	public final static String USER = "user";
+	public final static String IDUSER = "iduser";
+	public final static String USERS = "users";
+	public final static String DELETEUSERADMIN = "deleteuseradmin";
+	public final static String STATUS = "status";
 	public final static String FORM = "form";
 	public final static String MESSAGES = "messages";
 	public final static String ADDMESSAGE = "addmessage";
+	public final static String DELETEMESSAGE = "deletemessage";
+	public final static String DELETEMESSAGEADMIN = "deletemessageadmin";
+	public final static String IDMESSAGE = "idmessage";
 	public final static String ACCOUNT = "myaccount";
 	public final static String UPDATEMESSAGE = "updatemessage";
 	public final static String UPDATEUSER = "updateuser";
