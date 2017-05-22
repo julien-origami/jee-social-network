@@ -79,6 +79,23 @@ public class MessageDAO implements IMessageDao {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public int getNumberOfMessage() {
+		ResultSet resultats = null;
+		int res = 0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM MESSAGES");
+			resultats = preparedStatement.executeQuery();
+			while(resultats.next()) {
+				res = resultats.getInt(1);
+			}		
+			preparedStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 	@Override
 	public void deleteMessage(Long idMessage, User user) {

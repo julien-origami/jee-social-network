@@ -3,7 +3,6 @@ package fr.jcjTeam.theSocialNetwork.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,6 @@ import fr.jcjTeam.theSocialNetwork.service.MessageService;
 /**
  * Servlet implementation class NewsServlet
  */
-@WebServlet("/"+Constant.NEWS)
 public class NewsServlet extends AuthenticatorServlet {
 	private static final long serialVersionUID = 1L;
        

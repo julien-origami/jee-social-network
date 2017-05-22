@@ -12,7 +12,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import fr.jcjTeam.theSocialNetwork.jmx.Premier;
+import fr.jcjTeam.theSocialNetwork.jmx.Message;
 
 /**
  * Application Lifecycle Listener implementation class StartupListener
@@ -43,9 +43,9 @@ public class StartupListener implements ServletContextListener {
     	ObjectName name = null;
 
     	try {
-    	    name = new ObjectName("fr.epsi.myEpsi.jmx:type=PremierMBean");
-    	    Premier mbean = new Premier();
-
+    	    name = new ObjectName("fr.epsi.myEpsi.jmx:type=MessageMBean");
+    	    Message mbean = new Message();
+    	    
     	    mbs.registerMBean(mbean, name);
 
     	} catch (MalformedObjectNameException e) {
