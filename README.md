@@ -1,8 +1,4 @@
- _____ _             __            _       _        __     _                      _    
-/__   | |__   ___   / _\ ___   ___(_) __ _| |    /\ \ \___| |___      _____  _ __| | __
-  / /\| '_ \ / _ \  \ \ / _ \ / __| |/ _` | |   /  \/ / _ | __\ \ /\ / / _ \| '__| |/ /
- / /  | | | |  __/  _\ | (_) | (__| | (_| | |  / /\  |  __| |_ \ V  V | (_) | |  |   < 
- \/   |_| |_|\___|  \__/\___/ \___|_|\__,_|_|  \_\ \/ \___|\__| \_/\_/ \___/|_|  |_|\_\
+THE SOCIAL NETWORK
  
  authors:
  
@@ -35,5 +31,5 @@
  id : user@test.fr
  password : pass
  
- La Base de Données "projet1.script" est située dans le dossier "fr.jcjTeam.theSocialNetwork"
+
  
