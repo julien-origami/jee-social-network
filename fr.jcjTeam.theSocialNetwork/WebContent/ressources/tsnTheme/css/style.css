@@ -418,3 +418,45 @@ body form ul.dropdown-menu.status li.disabled label{
 	color: #a75501;
 	cursor: auto;
 }
+
+div.alert-danger span , div.alert-danger{
+    color: rgb(169, 68, 66);
+}
+
+div.errorForm {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+}
+
+div.alert-danger{
+    background-color: rgba(242, 222, 222, 0.68);
+    border: 0;
+	position: absolute;
+	z-index: 3000;
+	left: -999999px;
+	-webkit-animation: animAlert 5s linear;
+    -moz-animation: animAlert 5s linear;
+	animation: animAlert 5s linear;
+}
+@-webkit-keyframes animAlert{
+  	0% {opacity:0;position: relative;left:0;}
+  	5% {opacity: 1;left:0;position: relative;}
+  	85% {opacity: 1;left:0;position: relative;}
+  	95% {opacity: 1;left:0;position: relative;}
+  	100% {opacity: 0;position: absolute;}
+}
+@-moz-keyframes animAlert{
+  	0% {opacity:0;position: relative;left:0;}
+  	5% {opacity: 1;left:0;position: relative;}
+  	85% {opacity: 1;left:0;position: relative;}
+  	95% {opacity: 0;left:0;position: relative;}
+  	100% {opacity: 0;position: absolute;}
+}
+@keyframes animAlert{
+  	0% {opacity:0;position: relative;left:0;}
+  	5% {opacity: 1;left:0;position: relative;}
+  	85% {opacity: 1;left:0;position: relative;}
+  	95% {opacity: 1;left:0;position: relative;}
+  	100% {opacity: 0;position: absolute;}
+}

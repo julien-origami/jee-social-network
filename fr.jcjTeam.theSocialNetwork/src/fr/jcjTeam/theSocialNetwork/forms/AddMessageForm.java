@@ -25,10 +25,10 @@ public class AddMessageForm extends AForm{
         }
 
         if ( mistakes.isEmpty() ) {
-            result = "Succès de la connexion.";
+            result = "Message ajouté.";
             canValidate = true;
         } else {
-            result = "Échec de la connexion.";
+            result = "Échec de l'ajout du message.";
         }
 
         return canValidate;

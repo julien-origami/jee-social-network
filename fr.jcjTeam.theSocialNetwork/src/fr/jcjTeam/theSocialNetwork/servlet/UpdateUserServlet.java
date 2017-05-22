@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
+import fr.jcjTeam.theSocialNetwork.forms.IForm;
 import fr.jcjTeam.theSocialNetwork.forms.UpdateUserForm;
 
 /**
@@ -37,6 +38,8 @@ public class UpdateUserServlet extends AuthenticatorServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UpdateUserForm updateUserForm = new UpdateUserForm();
 		updateUserForm.canValidateForm(request);
+		
+		request.setAttribute( Constant.FORM, (IForm)updateUserForm );
 		
 		doGet(request, response);
 	}

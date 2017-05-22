@@ -3,26 +3,27 @@ package fr.jcjTeam.theSocialNetwork.servlet;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.forms.IForm;
-import fr.jcjTeam.theSocialNetwork.forms.UpdateMessageForm;
+import fr.jcjTeam.theSocialNetwork.forms.SignupForm;
 
 /**
- * Servlet implementation class UpdateMessage
+ * Servlet implementation class AddUserAdminServlet
  */
-@WebServlet("/"+Constant.UPDATEMESSAGE)
-public class UpdateMessageServlet extends AuthenticatorServlet {
+@WebServlet("/"+Constant.ADDUSERADMIN)
+public class AddUserAdminServlet extends AuthenticatorServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see AuthenticatorServlet#AuthenticatorServlet()
+     * @see HttpServlet#HttpServlet()
      */
-    public UpdateMessageServlet() {
+    public AddUserAdminServlet() {
         super();
-        this.path = Constant.ACCOUNT;
+        this.path = Constant.ADMIN;
     }
 
 	/**
@@ -36,10 +37,11 @@ public class UpdateMessageServlet extends AuthenticatorServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UpdateMessageForm updateMessageForm = new UpdateMessageForm();
-		updateMessageForm.canValidateForm(request);
-		
-		request.setAttribute( Constant.FORM, (IForm)updateMessageForm );
+		SignupForm signupForm = new SignupForm(true);
+
+        signupForm.canCreateUser( request );
+
+        request.setAttribute( Constant.FORM, (IForm)signupForm );
 		
 		doGet(request, response);
 	}

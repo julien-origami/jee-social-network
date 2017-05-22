@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.jcjTeam.theSocialNetwork.beans.Constant;
 import fr.jcjTeam.theSocialNetwork.forms.AddMessageForm;
+import fr.jcjTeam.theSocialNetwork.forms.IForm;
 
 /**
  * Servlet implementation class AddMessageServlet
@@ -39,9 +40,7 @@ public class AddMessageServlet extends AuthenticatorServlet{
 		AddMessageForm addMessageForm = new AddMessageForm();
 		addMessageForm.canValidateForm(request);
 		
-		/**
-		 * Implement Error and Success Event on customer screen
-		 */
+		request.setAttribute( Constant.FORM, (IForm)addMessageForm );
 		
 		doGet(request, response);
 	}

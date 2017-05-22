@@ -86,7 +86,7 @@
 							    	</div>
 							    	<div class="col-md-4">
 									    <p>Ajoutez un nouvel administrateur</p>
-								    	<form method="post" action="${pageContext.request.contextPath}/<% out.print(Constant.SIGNUP); %>">
+								    	<form method="post" action="${pageContext.request.contextPath}/<% out.print(Constant.ADDUSERADMIN); %>">
 									    	<div class="input-group">
   												<span required="required" class="glyphicon glyphicon-user input-group-addon" id="basic-addon1"></span>
   												<input required="required" type="text" class="form-control" placeholder="Nom" name="<% out.print(Constant.SURNAME); %>" aria-describedby="basic-addon1">

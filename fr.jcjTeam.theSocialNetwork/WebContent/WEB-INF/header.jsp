@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="fr.jcjTeam.theSocialNetwork.forms.IForm"%>
 <%@page import="fr.jcjTeam.theSocialNetwork.beans.User"%>
 <%@page import="fr.jcjTeam.theSocialNetwork.beans.Constant"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -56,3 +58,13 @@
 				</div>
 			</header>
 		</div>
+		<% IForm form = (IForm) request.getAttribute(Constant.FORM); 
+		if(form != null) { %>
+			<div class="errorForm">
+				<% for (Map.Entry<String, String> entry : form.getMistakes().entrySet()) { %>
+				<div class="alert alert-danger" role="alert">
+  					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><% out.print(entry.getValue()); %>
+  				</div>
+				<% } %>
+			</div>
+		<% } %>

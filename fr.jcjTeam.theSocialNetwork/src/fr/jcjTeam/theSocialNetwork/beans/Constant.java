@@ -19,6 +19,7 @@ public class Constant {
 	public final static String USER = "user";
 	public final static String IDUSER = "iduser";
 	public final static String USERS = "users";
+	public final static String ADDUSERADMIN = "addusersadmin";
 	public final static String DELETEUSERADMIN = "deleteuseradmin";
 	public final static String STATUS = "status";
 	public final static String FORM = "form";

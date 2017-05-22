@@ -13,11 +13,19 @@ public class SignupForm extends AForm {
     private static final String CHAMP_PASS_CONFIRM   = Constant.PASSWORD_CONFIRMED;
     private static final String CHAMP_NAME  = Constant.NAME;
     private static final String CHAMP_SURNAME   = Constant.SURNAME;
-    private static final String CHAMP_ADMIN   = Constant.ADMIN;
-
+    private Boolean admin;
+    
 	@Override
 	public boolean canValidateForm(HttpServletRequest request) {
 		return false;
+	}
+	
+	public SignupForm(){
+		this.admin = false;
+	}
+	
+	public SignupForm(Boolean admin){
+		this.admin = admin;
 	}
 	
 	public User canCreateUser( HttpServletRequest request ) {
@@ -26,12 +34,8 @@ public class SignupForm extends AForm {
         String passConfirmed = getValueFromRequest( request, CHAMP_PASS_CONFIRM );
         String name = getValueFromRequest( request, CHAMP_NAME );
         String surname = getValueFromRequest( request, CHAMP_SURNAME );
-        String admin = getValueFromRequest( request, CHAMP_ADMIN );
         
-        Boolean resAdmin = false;
-        if( admin != null ){
-        	resAdmin = true;
-        }
+        Boolean resAdmin = admin;
         
         try {
             nameSurnameNotNull(name, surname);
@@ -47,10 +51,12 @@ public class SignupForm extends AForm {
 
         User user = new User(email, name, surname, password, resAdmin);
         
-        try {
-            user = addUser( user );
-        } catch ( Exception e ) {
-            this.setMistakes( Constant.USER, e.getMessage() );
+        if ( mistakes.isEmpty() ) {
+	        try {
+	            user = addUser( user );
+	        } catch ( Exception e ) {
+	            this.setMistakes( Constant.USER, e.getMessage() );
+	        }
         }
 
         if ( mistakes.isEmpty() ) {
@@ -78,7 +84,7 @@ public class SignupForm extends AForm {
     }
 	
 	private void nameSurnameNotNull( String name, String surname ) throws Exception {
-    	if ( name.length()<3 || surname.length()<3 ) {
+    	if ( name.length()<3 || surname.length()<3 || name == null || surname == null) {
             throw new Exception( "Mot de passe de confirmation différent" );
         }
     }
