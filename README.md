@@ -35,5 +35,5 @@
  id : user@test.fr
  password : pass
  
- 
+ La Base de Données "projet1.script" est située dans le dossier "fr.jcjTeam.theSocialNetwork"
  
