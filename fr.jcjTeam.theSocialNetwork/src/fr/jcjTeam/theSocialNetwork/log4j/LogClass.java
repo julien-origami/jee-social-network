@@ -7,6 +7,6 @@ public class LogClass{
 	private static Logger log = (Logger) LogManager.getLogger(LogClass.class);
 	
 	public static void main(String[] args) {
-        log.info("Hello, World!");
+        log.error("Hello, World!");
     }
 }

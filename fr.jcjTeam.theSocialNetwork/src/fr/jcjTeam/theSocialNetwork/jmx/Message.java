@@ -7,8 +7,6 @@ import fr.jcjTeam.theSocialNetwork.dao.MessageDAO;
 public class Message implements MessageMBean {
 
     private int messageNumber = 0; 
-    private String title = "";
-    private String content = "";
 
     public void addMessage(String title, String content) {
     	MessageDAO messageDAO = new MessageDAO();
@@ -20,22 +18,6 @@ public class Message implements MessageMBean {
 	
 	public int getMessageNumber() {
         return messageNumber;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-    
-    public String getContent() {
-        return content;
-    }
-
-    public synchronized void setTitle(String title) {
-        this.title = title;
-    }
-    
-    public synchronized void setContent(String content) {
-        this.content = content;
     }
 
     public void refreshMessageNumber() {
